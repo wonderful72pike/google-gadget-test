@@ -23,7 +23,7 @@ function updateParticles(){
     var currentY = parseInt(particle.style.top);
     var newY = currentY + particle[1] + "px";
     particle.style.top = newY;
-    if (particle.style.top >= container.style.height){
+    if (particle.style.top >= container.height){
       container.removeChild(particle);
       particles.splice(i, 1);
     }
