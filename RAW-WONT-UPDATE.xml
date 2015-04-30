@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="snow yes" /> 
+  <Content type="html">
+     <![CDATA[
+       <div id="flake-container">
+       </div>
+       <script>
+       var container;
+       var isBlack = true;
+var timeChoices;
+var particles = [];
+function init() {
+container = document.getElementById("flake-container");
+window.setInterval(createParticle,200);
+window.setInterval(updateParticles, 10);
+timeChoices = [5,6,7,8,9,10];
+}
+function updateParticles(){
+  if (particles.length === 0){return}
+  for (var i=0;i<particles.length;i++){
+    var particle = particles[i][0];
+    var currentY = parseInt(particle.style.top);
+    var newY = currentY + particle[1] + "px";
+    particle.style.top = newY;
+    if (particle.style.top >= container.style.height){
+      container.removeChild(particle);
+      particles.splice(i, 1);
+    }
+  }
+}
+function destroy(evt) {
+  container.removeChild(evt.target);
+}
+function createParticle() {
+  isBlack = !isBlack;
+  var particle = document.createElement("span");
+  var randomSpeed = timeChoices[Math.floor(Math.random()*timeChoices.length)];
+  particle.innerHTML = "GLTS";
+  particle.className = "flake";
+  particle.style.position = "absolute";
+  particle.style.color = isBlack && "black" || "orange";
+  particle.style.backgroundColor = "transparent";
+  particle.style.width = "5px";
+  particle.style.height = "5px";
+  particle.style.pointerEvents = "none";
+  particle.style.right = Math.random()*100 + "%";
+  particle.style.borderRadius = "50%";
+  container.appendChild(particle);
+  particles.push([particle, Math.random()*8>>0]);
+}
+init();
+</script>
+     ]]>
+  </Content> 
+</Module>
