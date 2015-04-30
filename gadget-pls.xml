@@ -9,7 +9,7 @@
        var container;
        var isBlack = true;
 var timeChoices;
-var particles = {};
+var particles = [];
 
 function init() {
 container = document.getElementById("flake-container");
