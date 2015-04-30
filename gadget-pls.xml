@@ -2,7 +2,27 @@
 <Module>
   <ModulePrefs title="hello world example" /> 
   <Content type="html">
-     <![CDATA[ 
+     <![CDATA[
+     <style>
+     #flake-container {
+  position: fixed;
+  pointer-events: none;
+  overflow: hidden;
+  left:0;top:0;
+  width: 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes snow {
+  from {top:-1%;}
+  to {top:101%;}
+}
+
+@-moz-keyframes snow {
+  from {top:-1%;}
+  to {top:101%;}
+}
+     </style>
        <div id="flake-container">
        </div>
        <script>
